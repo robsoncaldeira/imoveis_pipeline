@@ -6,7 +6,6 @@ Extrai dados completos dos imóveis direto do capture network
 
 import json
 import sqlite3
-import csv
 from pathlib import Path
 from datetime import datetime
 import logging
@@ -99,20 +98,6 @@ def save_to_db(imoveis):
     conn.close()
     logger.info("✅ Salvamento concluído")
 
-def export_csv(imoveis):
-    """Exporta para CSV"""
-    csv_file = OUTPUT_DIR / f"imoveis_olx_extratos_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv"
-    
-    logger.info(f"📄 Exportando para {csv_file.name}...")
-    
-    with open(csv_file, 'w', newline='', encoding='utf-8') as f:
-        writer = csv.DictWriter(f, fieldnames=['list_id', 'ad_url', 'titulo', 'preco', 'cidade', 'estado', 'bairro', 'categoria'])
-        writer.writeheader()
-        writer.writerows(imoveis)
-    
-    logger.info(f"✅ CSV exportado: {csv_file}")
-    return csv_file
-
 def main():
     # Extrai dados
     imoveis = extract_data_from_capture()
@@ -123,9 +108,6 @@ def main():
     
     # Salva no DB
     save_to_db(imoveis)
-    
-    # Exporta CSV
-    export_csv(imoveis)
     
     # Estatísticas
     com_preco = sum(1 for im in imoveis if im['preco'])

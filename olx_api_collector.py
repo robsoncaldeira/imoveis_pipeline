@@ -278,7 +278,7 @@ def main():
     
     if args.insert_db:
         print(f'\n✓ Inserted {len(discovered)} links into DB (imoveis.db)')
-        print('Next: run ScraperEscalavel to extract full property details and export CSV')
+        print('Next: run extract_from_capture.py to extract full property details to DB')
 
 
 if __name__ == '__main__':
