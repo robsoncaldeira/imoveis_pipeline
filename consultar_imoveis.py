@@ -8,7 +8,8 @@ import sqlite3
 from pathlib import Path
 import json
 
-DB_PATH = Path("imoveis.db")
+# Banco sempre na raiz do projeto
+DB_PATH = Path(__file__).resolve().parent / "imoveis.db"
 
 def query_all_imoveis():
     """Consulta todos os imóveis do banco"""

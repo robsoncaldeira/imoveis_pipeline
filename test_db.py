@@ -7,7 +7,8 @@ Script de teste para verificar inserção no DB
 import sqlite3
 from pathlib import Path
 
-DB_PATH = Path("imoveis.db")
+# Caminho absoluto para o banco, fixo na raiz do projeto
+DB_PATH = Path(__file__).resolve().parent / "imoveis.db"
 
 def check_db():
     """Verifica conteúdo do DB"""

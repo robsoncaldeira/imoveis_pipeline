@@ -1,7 +1,11 @@
 #!/usr/bin/env python3
 import sqlite3
+from pathlib import Path
 
-conn = sqlite3.connect('imoveis.db')
+# Garante uso do banco na raiz do projeto
+DB_PATH = Path(__file__).resolve().parent / "imoveis.db"
+
+conn = sqlite3.connect(DB_PATH)
 c = conn.cursor()
 
 # Ver estrutura da tabela

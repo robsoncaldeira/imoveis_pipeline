@@ -5,7 +5,8 @@
 import sqlite3
 from pathlib import Path
 
-db_path = Path('imoveis.db')
+# Caminho absoluto do banco na raiz do projeto
+db_path = Path(__file__).resolve().parent / 'imoveis.db'
 conn = sqlite3.connect(db_path)
 cursor = conn.cursor()
 

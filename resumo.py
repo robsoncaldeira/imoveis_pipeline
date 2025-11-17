@@ -40,8 +40,8 @@ if csv_files:
      └─ Criado: {csv_mtime.strftime('%Y-%m-%d %H:%M:%S')}
 """)
 
-# 2. Banco de dados
-db_path = Path("imoveis.db")
+# 2. Banco de dados (fixo na raiz do projeto)
+db_path = Path(__file__).resolve().parent / "imoveis.db"
 if db_path.exists():
     db_size = db_path.stat().st_size / 1024 / 1024  # em MB
     

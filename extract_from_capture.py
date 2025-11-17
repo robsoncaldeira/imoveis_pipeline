@@ -13,7 +13,8 @@ import logging
 logging.basicConfig(level=logging.INFO, format='%(message)s')
 logger = logging.getLogger()
 
-DB_PATH = Path("imoveis.db")
+# Caminho absoluto para o banco na raiz do projeto
+DB_PATH = Path(__file__).resolve().parent / "imoveis.db"
 CAPTURE_FILE = Path("output/network_www.olx.com.br_20251114_120445.json")
 OUTPUT_DIR = Path("output")
 
