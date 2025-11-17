@@ -71,6 +71,22 @@ def save_to_db(imoveis):
     conn = sqlite3.connect(DB_PATH)
     c = conn.cursor()
     
+    # Cria tabela se não existir
+    c.execute("""
+        CREATE TABLE IF NOT EXISTS imoveis (
+            id TEXT PRIMARY KEY,
+            link TEXT,
+            titulo TEXT,
+            preco TEXT,
+            cidade TEXT,
+            estado TEXT,
+            endereco TEXT,
+            descricao TEXT,
+            fonte TEXT,
+            data_coleta TEXT
+        )
+    """)
+    
     logger.info(f"💾 Salvando {len(imoveis)} imóveis no banco...")
     
     for im in imoveis:
